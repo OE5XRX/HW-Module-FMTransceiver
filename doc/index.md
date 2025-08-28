@@ -1,10 +1,10 @@
 ---
-title: <NAME>
-nav_order: 1
+title: FM Transceiver
+nav_order: 5
 parent: Hardware
 ---
 
-# <NAME> PCB
+# FM Transceiver PCB
 
 <table>
   <tr><th>Top</th><th>Bottom</th></tr>
@@ -14,7 +14,12 @@ parent: Hardware
   </tr>
 </table>
 
-Some Text
+Das `FM` Modul beherbergt einen FM Chip (SA818x) für das 2m oder 70cm Band.
+
+| Spannung |                          benötigter Strom |
+| -------- | ----------------------------------------- |
+|      +5V |                                   max. 1A |
+|     +12V | max. 1A (SA818) via buck converter for 5V |
 
 ## Daten
 
