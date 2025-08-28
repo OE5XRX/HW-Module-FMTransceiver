@@ -1,0 +1,26 @@
+name: Kibot check
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'main'
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  kibot_check:
+    name: Check with Kibot
+    runs-on: ubuntu-24.04
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: check KiCad files
+      uses: INTI-CMNB/KiBot@v2_k9
+      with:
+        config: test.kibot.yaml
+        dir: output
+        schema: main.kicad_sch
+        verbose: 0

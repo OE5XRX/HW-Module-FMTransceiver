@@ -1,0 +1,57 @@
+name: Create Production Data For Release Version
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  export-ecad:
+    name: Export ECAD
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update the PCBs with the BETA and git hash
+        run: |
+          export COMMIT=$(git rev-parse --short HEAD)
+          echo "COMMIT = ${COMMIT}"
+          sed -i "s/<<HASH>>/${GITHUB_REF_NAME}-${COMMIT}/g" *.kicad_*
+
+      - name: Generate Export Files
+        uses: INTI-CMNB/KiBot@v2_k9
+        with:
+          config: production.kibot.yaml
+          dir: output
+          schema: main.kicad_sch
+          board: main.kicad_pcb
+          verbose: 0
+
+      - name: copy doc files to output folder
+        run: sudo cp doc/* output/
+
+      - name: Upload Export Files as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production
+          path: output
+          if-no-files-found: error
+
+#      - name: Generate Parts on InvenTree Server
+#        env:
+#          INVENTREE_API_TOKEN: ${{ secrets.INVENTREE_API_TOKEN }}
+#          INVENTREE_API_HOST: ${{ secrets.INVENTREE_API_HOST }}
+#        run: |
+#          pip install -r scripts/requirements.txt
+#          python3 scripts/bom-export.py --csv_file output/*-bom.csv --name "${{ github.event.repository.name }}" --version "${{ github.ref_name }}" --pcb_image output/*-3D_top-without.png --assembly_image output/*-3D_top-with.png
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_GH_TOKEN }}
+          repository-name: OE5XRX/OE5XRX.github.io
+          branch: main
+          folder: output
+          target-folder: docs/remote-station/hardware/${{ github.event.repository.name }}
+          clean: true

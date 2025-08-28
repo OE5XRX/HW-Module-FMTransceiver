@@ -1,0 +1,12 @@
+kibot:
+  version: 1
+
+global:
+  field_lcsc_part: LCSC
+
+preflight:
+  erc:
+    warnings_as_errors: true
+  drc: true
+  update_xml: false
+  check_zone_fills: true

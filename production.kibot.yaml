@@ -1,0 +1,94 @@
+kibot:
+  version: 1
+
+globals:
+  resources_dir: Fabrication
+  field_lcsc_part: LCSC
+
+import:
+  - file: JLCPCB_stencil
+
+outputs:
+  - name: ibom
+    comment: 'Interactive Bill of Materials'
+    type: ibom
+
+  - name: bom
+    comment: 'Bill of Materials'
+    type: bom
+    options:
+      csv:
+        hide_pcb_info: true
+        hide_stats_info: true
+      format: CSV
+
+  - name: html_bom
+    comment: 'HTML BOM'
+    type: bom
+    options:
+      html:
+        title: 'Bill of Materials'
+        lcsc_link: 'LCSC'
+        mouser_link: 'MOUSER'
+        logo: 'doc/Icon.png'
+
+  - name: SchematicPDF
+    comment: "Print schematic PDF"
+    type: pdf_sch_print
+    options:
+      color_theme: dracula
+      background_color: true
+
+  - name: step_file
+    comment: 'STEP file generation'
+    type: step
+
+  - name: KiCad_3D_top
+    comment: "render 3D top"
+    type: render_3d
+    options:
+      view: 'top'
+      orthographic: true
+      ray_tracing: true
+      auto_crop: true
+      enable_crop_workaround: true
+      transparent_background: true
+
+  - name: KiCad_3D_bottom
+    comment: "render 3D bottom"
+    type: render_3d
+    options:
+      view: 'bottom'
+      orthographic: true
+      ray_tracing: true
+      auto_crop: true
+      enable_crop_workaround: true
+      transparent_background: true
+
+  - name: KiCad_3D_top_with
+    comment: "render 3D top with"
+    type: render_3d
+    options:
+      output: '%f-%i%I%v-with.%x'
+      view: 'top'
+      orthographic: true
+      ray_tracing: true
+      auto_crop: true
+      enable_crop_workaround: true
+      transparent_background: true
+      show_components: 'all'
+      zoom: -2
+      move_y: -1
+
+  - name: KiCad_3D_top_without
+    comment: "render 3D top without"
+    type: render_3d
+    options:
+      output: '%f-%i%I%v-without.%x'
+      view: 'top'
+      orthographic: true
+      ray_tracing: true
+      auto_crop: true
+      enable_crop_workaround: true
+      transparent_background: true
+      show_components: 'none'

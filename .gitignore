@@ -1,0 +1,40 @@
+# KiCad project backup files
+*.lck
+*-backups
+*-bak
+*.bak
+*.kicad_pcb-bak
+*.sch-bak
+*.kicad_prl
+
+# Autosave files
+*.autosave
+_autosave-*
+*auto_saved_files*
+
+# KiCad JSON cache
+*.json
+
+# Backup files and archives
+*.zip
+*.tar.gz
+
+# Netlist, BOM, and reports
+*.xml
+*.net
+*.csv
+*.rpt
+
+# KiCad user-specific configuration (optional, keep if collaborating)
+fp-info-cache
+*.dcm
+*.cache
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Python cache (if scripts are used)
+__pycache__/
+*.pyc
