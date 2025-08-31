@@ -1,0 +1,23 @@
+{"0": {
+    "doc": "FM Transceiver",
+    "title": "FM Transceiver PCB",
+    "content": "| Top | Bottom | . | | . Das FM Modul beherbergt einen FM Chip (SA818x) für das 2m oder 70cm Band. | Spannung | benötigter Strom | . | +5V | max. 1A | . | +12V | max. 1A (SA818) via buck converter for 5V | . ",
+    "url": "/#fm-transceiver-pcb",
+    
+    "relUrl": "/#fm-transceiver-pcb"
+  },"1": {
+    "doc": "FM Transceiver",
+    "title": "Daten",
+    "content": ". | Schaltplan | BOM | iBOM | JLCPCB fabrication &amp; stencil | JLCPCB Bom | JLCPCB Pick&amp;Place | . ",
+    "url": "/#daten",
+    
+    "relUrl": "/#daten"
+  },"2": {
+    "doc": "FM Transceiver",
+    "title": "FM Transceiver",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  }
+}

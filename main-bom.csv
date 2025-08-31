@@ -1,0 +1,34 @@
+Row,Description,Part,References,Value,Footprint,Quantity Per PCB,Status,Datasheet,LCSC,MOUSER
+1,Unpolarized capacitor,C,C203 C205,30pF,C_0805_2012Metric,2, ,~,,791-0805N300J500CT
+2,Unpolarized capacitor,C,C103 C402 C501 C601 C701,10nF/NP0,C_0805_2012Metric,5, ,~,,81-GRM2165C2A103JA1D
+3,Unpolarized capacitor,C,C101 C201 C202 C204 C206 C208 C210 C214 C215 C804 C805 C808,100nF,C_0805_2012Metric,12, ,~,C28233,
+4,Unpolarized capacitor,C,C211 C212,1uF,C_0805_2012Metric,2, ,~,,791-0805B105K250CT
+5,Unpolarized capacitor,C,C102,10uF,C_0805_2012Metric,1, ,~,,963-EMK212BJ106KG-T
+6,Unpolarized capacitor,C,C802 C803,10u,C_1206_3216Metric,2, ,~,C13585,
+7,Unpolarized capacitor,C,C806 C807,22u,C_1206_3216Metric,2, ,~,C12891,
+8,Polarized capacitor,C_Polarized,C104 C213,100u / 25V,CP_EIA-7343-43_Kemet-X,2, ,~,C132558,
+9,Unpolarized capacitor,C,C207 C209 C301 C401,4.7u/10V/X5R,C_0805_2012Metric,4, ,~,,187-CL21A475KAQNNNF
+10,Unpolarized capacitor,C,C302 C303,5.6nF/X7R/100V,C_0805_2012Metric,2, ,~,,791-0805B562K201CT
+11,"30V 0.2A Small Signal Schottky diode, SOD-123",BAT43W-V,D101,BAT43W-V,D_SOD-123,1, ,http://www.vishay.com/docs/85660/bat42.pdf,,78-BAT43W-G3-08
+12,"180MHz/490MHz 50 Ohm Passive Low Pass Filter, FV1206",LFCN-160,FL101,LFCN-180/490,Filter_Mini-Circuits_FV1206,1, ,https://www.minicircuits.com/pdfs/LFCN-180+.pdf,,"139-LFCN-180,139-LFCN-490"
+13,"Generic connector, double row, 02x10, row letter first pin numbering scheme (pin number consists of a letter for the row and a number for the pin index in this row. a1, ..., aN; b1, ..., bN), script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_02x10_Row_Letter_First,J202,Conn_02x10_Row_Letter_First,PCN10C-20S-2.54DS,1, ,~,,798-PCN10C20S254DS72
+14,"Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface",Conn_ARM_JTAG_SWD_10,J201,Conn_ARM_JTAG_SWD_10,PinHeader_2x05_P2.54mm_Horizontal,1, ,http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf,,
+15,"coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)",Conn_Coaxial,J101,Conn_Coaxial,SMA_Amphenol_132289_EdgeMount,1, ,~,,530-142-0701-801
+16,Inductor with iron core,L_Iron,L801,6.8u,WE-XHMI_6060,1, ,~,,710-74439346068
+17,"0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23",2N7002,Q501 Q601 Q701,2N7002,SOT-23,3, ,https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF,,637-2N7002
+18,Resistor,R,R801,49R9,R_0805_2012Metric,1, ,~,,667-ERA-6AED49R9V
+19,Resistor,R,R101 R102,220,R_0805_2012Metric,2, ,~,,667-ERA-6AEB221V
+20,Resistor,R,R201 R403,2k2,R_0805_2012Metric,2, ,~,C17520,
+21,Resistor,R,R202,3k9,R_0805_2012Metric,1, ,~,,603-RT0805DRD073K9L
+22,Resistor,R,R401 R402,5k1,R_0805_2012Metric,2, ,~,C27834,
+23,Resistor,R,R302 R303 R304 R501 R601 R701,10k,R_0805_2012Metric,6, ,~,,603-RT0805DRE0710KL
+24,Resistor,R,R803,13k7,R_0805_2012Metric,1, ,~,,652-CR0805FX-1372ELF
+25,Resistor,R,R301,56k,R_0805_2012Metric,1, ,~,,603-RT0805DRE0756KL
+26,Resistor,R,R802,100k,R_0805_2012Metric,1, ,~,,603-RC0805JR-07100KL
+27,"32 kb CMOS Serial EEPROM, SOIC-8/TSSOP-8/DFN-8",CAT24C128,U202,CAT24C32,SOIC-8_3.9x4.9mm_P1.27mm,1, ,,,698-CAT24C32WI-GT3
+28,"4.5-V to 36-V, 3-A synchronous buck converter with 40-µA IQ, SOT-23-6",LMR51430,U801,LMR51430 500kHz,SOT-23-6,1, ,https://www.ti.com/lit/ds/symlink/lmr51430.pdf,,595-LMR51430XDDCR
+29,,SA818V,U101,SA818V,DRA818,1, ,,C3001504,
+30,"STMicroelectronics Arm Cortex-M4 MCU, 128KB flash, 32KB RAM, 72 MHz, 2.0-3.6V, 37 GPIO, LQFP48",STM32F302CBTx,U201,STM32F302CBTx,LQFP-48_7x7mm_P0.5mm,1, ,https://www.st.com/resource/en/datasheet/stm32f302cb.pdf,,511-STM32F302CBT7
+31,"300mA Capacitor-Free Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5",TLV73333PDBV,U203,TLV73333PQDBVRQ1,SOT-23-5,1, ,http://www.ti.com/lit/ds/symlink/tlv733p.pdf,C2862550,595-TLV73333PQDBVRQ1
+32,"Very low capacitance ESD protection diode, 2 data-line, SOT-23-6",USBLC6-2SC6,U204,USBLC6-2SC6,SOT-23-6,1, ,https://www.st.com/resource/en/datasheet/usblc6-2.pdf,C2827654,
+33,Two pin crystal,Crystal,Y201,8MHz / 20pF,Crystal_SMD_HC49-SD,1, ,~,,73-XT49M800-20
