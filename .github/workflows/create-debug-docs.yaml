@@ -5,6 +5,9 @@ on:
     branches:
       - 'main'
 
+permissions:
+  contents: write
+
 jobs:
   export-ecad:
     name: Export ECAD
@@ -35,3 +38,33 @@ jobs:
           name: production
           path: output
           if-no-files-found: error
+
+      - name: copy output files to doc folder
+        run: sudo cp -R output/* doc
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          generator_config_file: docs
+
+      - name: Build with Jekyll
+        run:  cd docs && bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs/_site
+          TARGET_FOLDER: ${{ env.DEPLOY_PATH }}
+          CLEAN: true
