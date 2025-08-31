@@ -1,0 +1,16 @@
+title: OE5XRX
+description: Amateurfunkclub für Remote Stationen
+
+theme: just-the-docs
+favicon_ico: /favicon.ico
+logo: "/Icon.png"
+
+mermaid:
+  version: "11.3.0"
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
