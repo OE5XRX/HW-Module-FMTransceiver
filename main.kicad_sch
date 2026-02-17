@@ -1788,7 +1788,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 144.78) (xy 175.26 144.78)
+			(xy 158.75 128.27) (xy 175.26 128.27)
 		)
 		(stroke
 			(width 0)
@@ -1888,7 +1888,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 144.78) (xy 125.73 144.78)
+			(xy 116.84 128.27) (xy 125.73 128.27)
 		)
 		(stroke
 			(width 0)
@@ -2247,7 +2247,7 @@
 		(uuid "209ccbca-5fa6-4bdd-9514-7b446a9d1bec")
 	)
 	(label "nPOWER_DOWN"
-		(at 175.26 144.78 180)
+		(at 175.26 128.27 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2307,7 +2307,7 @@
 		(uuid "4fcb1bb2-b3cb-4bd0-9f61-0c35d8aa62da")
 	)
 	(label "GPIO2"
-		(at 116.84 144.78 0)
+		(at 116.84 128.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4262,68 +4262,6 @@
 		)
 	)
 	(sheet
-		(at 125.73 139.7)
-		(size 33.02 10.16)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "03cdba2c-ce18-41b8-ae87-2767326fecab")
-		(property "Sheetname" "Pin Driver SA820"
-			(at 125.73 138.9884 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "pin_driver.kicad_sch"
-			(at 125.73 150.4446 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "SA818_PIN" input
-			(at 158.75 144.78 0)
-			(uuid "511e8364-9416-4404-acfa-611303a9f118")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "STM32_GPIO" input
-			(at 125.73 144.78 180)
-			(uuid "dac31fc9-5cf5-4ed3-9cfd-f646f770a63e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "fm"
-				(path "/f228839c-6576-40b2-ae70-679b7b460639"
-					(page "7")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 125.73 100.33)
 		(size 33.02 10.16)
 		(exclude_from_sim no)
@@ -4339,7 +4277,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "0ab8e43f-a9b2-43d4-be36-1f1ef25ab18a")
-		(property "Sheetname" "Pin Driver SA818"
+		(property "Sheetname" "Pin Driver SA818 MOSFET"
 			(at 125.73 99.6184 0)
 			(effects
 				(font
@@ -4378,7 +4316,7 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
 					(page "5")
 				)
@@ -4440,7 +4378,7 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
 					(page "4")
 				)
@@ -4449,7 +4387,7 @@
 	)
 	(sheet
 		(at 125.73 120.65)
-		(size 33.02 10.16)
+		(size 33.02 13.97)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -4462,8 +4400,8 @@
 		(fill
 			(color 0 0 0 0.0000)
 		)
-		(uuid "9b9e5cf7-8c6a-4bb3-8c33-fcdf0be9d0fd")
-		(property "Sheetname" "Pin Driver SA819"
+		(uuid "955bc80c-8e97-4c74-b833-12570cf5294a")
+		(property "Sheetname" "Pin Driver SA818 NPN"
 			(at 125.73 119.9384 0)
 			(effects
 				(font
@@ -4472,8 +4410,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "pin_driver.kicad_sch"
-			(at 125.73 131.3946 0)
+		(property "Sheetfile" "pin_driver_npn.kicad_sch"
+			(at 125.73 135.2046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4481,9 +4419,9 @@
 				(justify left top)
 			)
 		)
-		(pin "SA818_PIN" input
+		(pin "SA818_PIN1" input
 			(at 158.75 125.73 0)
-			(uuid "be0d8780-263b-4d18-9d7c-0546ebf596c9")
+			(uuid "e66047cf-4610-4bee-8958-29611a6299f3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4491,9 +4429,29 @@
 				(justify right)
 			)
 		)
-		(pin "STM32_GPIO" input
+		(pin "SA818_PIN2" input
+			(at 158.75 128.27 0)
+			(uuid "d2ed9d60-7ca7-4907-a6bc-6f39fad284b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "STM32_GPIO1" input
 			(at 125.73 125.73 180)
-			(uuid "657739e5-05f0-46aa-91f3-990583683d7e")
+			(uuid "6ba05789-fd2e-4ca3-8bfe-0700b8063a05")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "STM32_GPIO2" input
+			(at 125.73 128.27 180)
+			(uuid "d3924f87-92a0-4883-a246-23bc9598bfaa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4502,9 +4460,9 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
-					(page "6")
+					(page "7")
 				)
 			)
 		)
@@ -4564,7 +4522,7 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
 					(page "8")
 				)
@@ -4626,7 +4584,7 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
 					(page "3")
 				)
@@ -4768,7 +4726,7 @@
 			)
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639"
 					(page "2")
 				)

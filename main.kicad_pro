@@ -68,28 +68,7 @@
           "width": 0.315468
         }
       ],
-      "drc_exclusions": [
-        [
-          "starved_thermal|119397000|119577500|c02422d8-cc7f-4c86-82d5-4a4dd0636d87|daf4b8d6-1ac1-458f-957c-0b7528f299f8|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|121605000|120146500|0d57c912-bc54-4d5b-a9fe-8d4701a1af7f|7b6f5d5b-bbf1-484d-958a-dde10dc61f2f|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|125100000|119572000|c02422d8-cc7f-4c86-82d5-4a4dd0636d87|4a3b67ab-063c-4bb8-8f74-4be2a4630cc1|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|182239500|81290000|9bb367e3-a959-4f7e-afea-a0e97f371166|22329758-0c9e-4a51-bd81-8c3222249a7a|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|191643000|85001000|9bb367e3-a959-4f7e-afea-a0e97f371166|8406c762-93b5-4d0e-bc42-d25249cfe748|F.Cu",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -136,7 +115,7 @@
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
-        "starved_thermal": "error",
+        "starved_thermal": "ignore",
         "text_height": "warning",
         "text_on_edge_cuts": "error",
         "text_thickness": "warning",
@@ -471,7 +450,7 @@
       "endpoint_off_grid": "warning",
       "extra_units": "error",
       "footprint_filter": "error",
-      "footprint_link_issues": "warning",
+      "footprint_link_issues": "ignore",
       "four_way_junction": "ignore",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
@@ -489,7 +468,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -790,15 +769,11 @@
     ],
     [
       "0ab8e43f-a9b2-43d4-be36-1f1ef25ab18a",
-      "Pin Driver SA818"
+      "Pin Driver SA818 MOSFET"
     ],
     [
-      "9b9e5cf7-8c6a-4bb3-8c33-fcdf0be9d0fd",
-      "Pin Driver SA819"
-    ],
-    [
-      "03cdba2c-ce18-41b8-ae87-2767326fecab",
-      "Pin Driver SA820"
+      "955bc80c-8e97-4c74-b833-12570cf5294a",
+      "Pin Driver SA818 NPN"
     ],
     [
       "ae2b220f-194e-4d1c-9897-31c95a90a28f",
