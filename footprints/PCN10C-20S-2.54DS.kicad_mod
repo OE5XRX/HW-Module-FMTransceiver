@@ -1,7 +1,7 @@
 (footprint "PCN10C-20S-2.54DS"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "DIN41612 connector, type B/3, Horizontal, 2 rows 10 pins wide, https://www.erni-x-press.com/de/downloads/kataloge/englische_kataloge/erni-din41612-iec60603-2-e.pdf")
 	(tags "DIN 41612 IEC 60603 B/3")
@@ -25,19 +25,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" "Connector_DIN:DIN41612_B3_2x10_Male_Horizontal_THT"
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "a0131845-6504-4acf-8325-6c9425397fa3")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -527,14 +514,14 @@
 		(at -7.62 -2.54)
 		(size 2.85 2.85)
 		(drill 2.85)
-		(layers "F&B.Cu" "*.Mask")
+		(layers "*.Cu" "*.Mask")
 		(uuid "c60c5bf0-6b12-4074-94ef-b8a37c8e5118")
 	)
 	(pad "" np_thru_hole circle
 		(at 30.48 -2.54)
 		(size 2.85 2.85)
 		(drill 2.85)
-		(layers "F&B.Cu" "*.Mask")
+		(layers "*.Cu" "*.Mask")
 		(uuid "49ec0e97-5aeb-4b6a-b868-6218b550bf04")
 	)
 	(pad "a1" thru_hole roundrect
@@ -698,7 +685,8 @@
 		(remove_unused_layers no)
 		(uuid "0bfb549f-333f-401c-8615-6fa1da23dec3")
 	)
-	(model "${KIPRJMOD}/../../lib/kicad/PCN10C-20S-2.54DS.stp"
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d-models/PCN10C-20S-2.54DS.stp"
 		(offset
 			(xyz -71.7 1.2 8.3)
 		)
