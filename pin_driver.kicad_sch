@@ -668,6 +668,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 127 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ef77e930-3ec2-4d18-87c3-fe6752af3cf8")
 		)
@@ -817,6 +826,15 @@
 			)
 		)
 		(property "LCSC" ""
+			(at 140.97 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 140.97 90.17 0)
 			(effects
 				(font

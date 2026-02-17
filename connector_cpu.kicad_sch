@@ -6777,6 +6777,15 @@
 				)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 256.54 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "07084f6f-07bb-4429-9380-d8930a7f1edd")
 		)
@@ -6865,6 +6874,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 97.79 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2cda4372-1bbc-444a-880e-fe2c10aa4b80")
 		)
@@ -6945,6 +6963,15 @@
 			)
 		)
 		(property "MOUSER" "791-0805B105K250CT"
+			(at 214.63 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 214.63 36.83 0)
 			(effects
 				(font
@@ -7248,6 +7275,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 248.92 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a869ed20-4775-4396-9f76-2b0116c53dde")
 		)
@@ -7319,6 +7355,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 135.89 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 135.89 60.96 0)
 			(effects
 				(font
@@ -7680,6 +7725,15 @@
 			)
 		)
 		(property "MOUSER" "698-CAT24C32WI-GT3"
+			(at 198.12 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 198.12 143.51 0)
 			(effects
 				(font
@@ -8067,6 +8121,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 243.84 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e02b00a2-d3df-4a69-9ebf-2319407e15c4")
 		)
@@ -8130,6 +8193,24 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 2048KB flash, 786KB RAM, 160 MHz, 1.71-3.6V, 37 GPIO, LQFP48"
+			(at 123.19 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 123.19 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MOUSER" "511-STM32U575CIT6"
 			(at 123.19 110.49 0)
 			(effects
 				(font
@@ -8355,6 +8436,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 57.15 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "89c8378a-8924-4acf-9c6d-440777c4f75e")
 		)
@@ -8514,6 +8604,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 123.19 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "2"
@@ -8791,6 +8890,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 232.41 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0b83690f-5ad9-4daa-9163-96f5fec705db")
 		)
@@ -8862,6 +8970,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 86.36 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 86.36 54.61 0)
 			(effects
 				(font
@@ -8949,6 +9066,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 83.82 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a66566e5-59b0-4352-83fa-52960ad861e1")
 		)
@@ -9020,6 +9146,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 43.18 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 43.18 82.55 0)
 			(effects
 				(font
@@ -9105,6 +9240,15 @@
 			)
 		)
 		(property "MOUSER" "73-XT49M800-20"
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 62.23 91.44 0)
 			(effects
 				(font
@@ -9267,6 +9411,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 55.88 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0ac61056-5b70-465d-8355-025b1d8af45a")
 		)
@@ -9411,6 +9564,15 @@
 			)
 		)
 		(property "MOUSER" "798-PCN10C20S254DS72"
+			(at 222.25 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 222.25 99.06 0)
 			(effects
 				(font
@@ -9693,6 +9855,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 101.6 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7257446a-3b6a-47df-b952-932c0176ae5f")
 		)
@@ -9764,6 +9935,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 257.81 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 257.81 35.56 0)
 			(effects
 				(font
@@ -9983,6 +10163,15 @@
 			)
 		)
 		(property "MOUSER" "595-TLV73333PQDBVRQ1"
+			(at 231.14 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 231.14 31.75 0)
 			(effects
 				(font
@@ -10352,6 +10541,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 153.67 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "61d7e58c-f515-4214-a47f-679f25eb1f67")
 		)
@@ -10584,6 +10782,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 50.8 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "a20b0a1c-f369-42d0-8656-c69a5a3ba0bb")
 		)
@@ -10696,6 +10903,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 151.13 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1cd38258-d67d-436a-9cad-720288359c75")
 		)
@@ -10784,6 +11000,15 @@
 				(hide yes)
 			)
 		)
+		(property "SnapEDA_Link" ""
+			(at 68.58 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4a48d67a-ad95-4606-9134-fc8a333cd3a4")
 		)
@@ -10855,6 +11080,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 200.66 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 200.66 36.83 0)
 			(effects
 				(font
@@ -11857,6 +12091,15 @@
 			)
 		)
 		(property "LCSC" "C28233"
+			(at 72.39 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 72.39 54.61 0)
 			(effects
 				(font
