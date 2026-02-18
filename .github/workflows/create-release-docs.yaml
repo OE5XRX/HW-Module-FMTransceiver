@@ -38,20 +38,20 @@ jobs:
           path: output
           if-no-files-found: error
 
-#      - name: Generate Parts on InvenTree Server
-#        env:
-#          INVENTREE_API_TOKEN: ${{ secrets.INVENTREE_API_TOKEN }}
-#          INVENTREE_API_HOST: ${{ secrets.INVENTREE_API_HOST }}
-#        run: |
-#          pip install -r scripts/requirements.txt
-#          python3 scripts/bom-export.py --csv_file output/*-bom.csv --name "${{ github.event.repository.name }}" --version "${{ github.ref_name }}" --pcb_image output/*-3D_top-without.png --assembly_image output/*-3D_top-with.png
+      - name: Generate Parts on InvenTree Server
+        env:
+          INVENTREE_API_TOKEN: ${{ secrets.INVENTREE_API_TOKEN }}
+          INVENTREE_API_HOST: ${{ secrets.INVENTREE_API_HOST }}
+        run: |
+          pip install -r scripts/requirements.txt
+          python3 scripts/bom-export.py --csv_file output/*-bom.csv --name "${{ github.event.repository.name }}" --version "${{ github.ref_name }}" --pcb_image output/*-3D_top-without.png --assembly_image output/*-3D_top-with.png
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          token: ${{ secrets.DEPLOY_GH_TOKEN }}
-          repository-name: OE5XRX/OE5XRX.github.io
-          branch: main
-          folder: output
-          target-folder: docs/remote-station/hardware/${{ github.event.repository.name }}
-          clean: true
+#      - name: Deploy 🚀
+#        uses: JamesIves/github-pages-deploy-action@v4
+#        with:
+#          token: ${{ secrets.DEPLOY_GH_TOKEN }}
+#          repository-name: OE5XRX/OE5XRX.github.io
+#          branch: main
+#          folder: output
+#          target-folder: docs/remote-station/hardware/${{ github.event.repository.name }}
+#          clean: true
