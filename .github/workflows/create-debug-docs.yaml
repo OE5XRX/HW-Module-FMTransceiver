@@ -32,6 +32,9 @@ jobs:
           board: main.kicad_pcb
           verbose: 0
 
+      - name: Fix output directory permissions
+        run: sudo chmod -R a+w output/
+
       - name: Generate Stencil PNG
         run: |
           pip install -r scripts/requirements.txt
