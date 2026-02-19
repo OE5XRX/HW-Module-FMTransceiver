@@ -19,6 +19,7 @@ jobs:
           echo "COMMIT = ${COMMIT}"
           sed -i "s/<<HASH>>/${GITHUB_REF_NAME}-${COMMIT}/g" *.kicad_*
 
+      # kibot -c production.kibot.yaml -b main.kicad_pcb -e main.kicad_sch -d output
       - name: Generate Export Files
         uses: INTI-CMNB/KiBot@v2_k9
         with:
@@ -27,6 +28,13 @@ jobs:
           schema: main.kicad_sch
           board: main.kicad_pcb
           verbose: 0
+
+      - name: Generate Stencil PNG
+        run: |
+          pip install -r scripts/requirements.txt
+          python3 scripts/make_stencil_image.py \
+            output/main-stencil_top.svg \
+            output/main-stencil_top.png
 
       - name: copy doc files to output folder
         run: sudo cp doc/* output/
@@ -42,9 +50,16 @@ jobs:
         env:
           INVENTREE_API_TOKEN: ${{ secrets.INVENTREE_API_TOKEN }}
           INVENTREE_API_HOST: ${{ secrets.INVENTREE_API_HOST }}
+          MOUSER_API_KEY: ${{ secrets.MOUSER_API_KEY }}
         run: |
           pip install -r scripts/requirements.txt
-          python3 scripts/bom-export.py --csv_file output/*-bom.csv --name "${{ github.event.repository.name }}" --version "${{ github.ref_name }}" --pcb_image output/*-3D_top-without.png --assembly_image output/*-3D_top-with.png
+          python3 scripts/bom-export.py \
+            --csv_file output/*-bom.csv \
+            --name "${{ github.event.repository.name }}" \
+            --version "${{ github.ref_name }}" \
+            --pcb_image output/*-3D_top-without.png \
+            --assembly_image output/*-3D_top-with.png \
+            --stencil_image output/*-stencil_top.png
 
 #      - name: Deploy 🚀
 #        uses: JamesIves/github-pages-deploy-action@v4

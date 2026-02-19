@@ -15,6 +15,9 @@ _autosave-*
 # KiCad JSON cache
 *.json
 
+# KiBot output folder
+output
+
 # Backup files and archives
 *.zip
 *.tar.gz

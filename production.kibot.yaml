@@ -92,3 +92,19 @@ outputs:
       enable_crop_workaround: true
       transparent_background: true
       show_components: 'none'
+
+  - name: stencil_top
+    comment: "SMT stencil top paste layer render (post-processed to PNG)"
+    type: pcb_print
+    options:
+      output: '%f-stencil_top.%x'
+      format: SVG
+      plot_sheet_reference: false
+      pages:
+        - layers:
+            - layer: F.Paste
+              color: '#000000'
+            - layer: F.Silkscreen
+              color: '#0055AA'
+            - layer: Edge.Cuts
+              color: '#FFB300'
