@@ -56,7 +56,7 @@ jobs:
           MOUSER_API_KEY: ${{ secrets.MOUSER_API_KEY }}
         run: |
           pip install -r scripts/requirements.txt
-          python3 scripts/bom-export.py \
+          python3 scripts/bom_export.py \
             --csv_file output/*-bom.csv \
             --name "${{ github.event.repository.name }}" \
             --version "${{ github.ref_name }}" \
