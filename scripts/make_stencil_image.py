@@ -46,7 +46,25 @@ WHITE_THRESHOLD = 220
 
 
 def _svg_to_png(svg_path: Path, png_path: Path, dpi: int) -> None:
-    """Rasterise *svg_path* to *png_path* using rsvg-convert or Inkscape."""
+    """Rasterise *svg_path* to *png_path*.
+
+    Tries in order:
+    1. cairosvg  (Python library, no external tool needed)
+    2. rsvg-convert
+    3. inkscape
+    """
+    # 1. cairosvg
+    try:
+        import cairosvg
+        scale = dpi / 96.0  # SVG default is 96 dpi
+        cairosvg.svg2png(url=str(svg_path), write_to=str(png_path), scale=scale)
+        return
+    except ImportError:
+        pass
+    except Exception as exc:
+        print(f"  cairosvg failed ({exc}), trying rsvg-convert …")
+
+    # 2. rsvg-convert / 3. inkscape
     for cmd in [
         ["rsvg-convert", "-d", str(dpi), "-p", str(dpi), "-o", str(png_path), str(svg_path)],
         ["inkscape", "--export-dpi", str(dpi), f"--export-filename={png_path}", str(svg_path)],
@@ -56,7 +74,9 @@ def _svg_to_png(svg_path: Path, png_path: Path, dpi: int) -> None:
             return
         except (FileNotFoundError, subprocess.CalledProcessError):
             continue
-    sys.exit(f"ERROR: neither rsvg-convert nor inkscape found; cannot convert {svg_path}")
+
+    sys.exit(f"ERROR: no SVG rasteriser found (cairosvg, rsvg-convert, inkscape). "
+             f"Install one of them or add cairosvg to requirements.txt.")
 
 
 def _composite_on_white(img: Image.Image) -> Image.Image:
