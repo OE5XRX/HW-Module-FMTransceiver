@@ -92,13 +92,20 @@ def _fetch_and_merge(
     return result
 
 
-def ensure_parts_exist(api: InvenTreeAPI, parts: list) -> None:
+def ensure_parts_exist(
+    api: InvenTreeAPI,
+    parts: list,
+    category_map: Optional[dict[str, tuple[str, ...]]] = None,
+) -> None:
     """
     For every BomEntry in *parts* that is missing from InvenTree, fetch data
     from LCSC / Mouser and create the part automatically.
 
     Each item in *parts* must have: reference, qty, lcsc, mouser,
     inventree_part, kicad_part, kicad_value, kicad_footprint attributes.
+
+    *category_map* is a dict mapping KiCad symbol names to InvenTree category
+    path tuples.  When None, the built-in ``default_categories.yaml`` is used.
     """
     lcsc_fetcher = LCSCFetcher()
     mouser_fetcher = MouserFetcher()
@@ -151,7 +158,7 @@ def ensure_parts_exist(api: InvenTreeAPI, parts: list) -> None:
             entry.inventree_part.append(existing_by_name)
             continue
 
-        category = resolve_part_category(api, kicad_part, part_data, kicad_footprint)
+        category = resolve_part_category(api, kicad_part, part_data, kicad_footprint, category_map)
         inv_part = create_part_in_inventree(api, name, part_data, category, lcsc_supplier, mouser_supplier)
         if inv_part:
             entry.inventree_part.append(inv_part)

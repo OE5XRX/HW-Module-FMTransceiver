@@ -22,6 +22,7 @@ from inventree.company import SupplierPart
 from inventree.part import BomItem, Part, PartCategory, PartRelated
 
 from inventree_sync import BomEntry, ensure_parts_exist
+from inventree_sync.categories import load_category_map
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
@@ -190,6 +191,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pcb_image",       required=True,  help="PCB render image")
     parser.add_argument("--assembly_image",  required=True,  help="Assembly render image")
     parser.add_argument("--stencil_image",   required=False, help="Stencil paste-layer render (optional)")
+    parser.add_argument(
+        "--categories",
+        required=False,
+        metavar="YAML_FILE",
+        help=(
+            "Path to a YAML file mapping KiCad symbol names to InvenTree "
+            "category hierarchies.  Defaults to the built-in "
+            "default_categories.yaml shipped with the package."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -203,8 +214,11 @@ def main() -> None:
 
     entries = load_bom(args.csv_file)
 
+    # Load category map (custom file or built-in default)
+    category_map = load_category_map(args.categories)
+
     # Create any parts that don't exist in InvenTree yet
-    ensure_parts_exist(api, entries)
+    ensure_parts_exist(api, entries, category_map)
 
     # Match every BOM entry to its InvenTree part via supplier SKU
     match_supplier_parts(api, entries)

@@ -4,8 +4,10 @@ categories.py – KiCad → InvenTree category mapping and part-name generation.
 
 import logging
 import re
+from pathlib import Path
 from typing import Optional
 
+import yaml
 from inventree.api import InvenTreeAPI
 from inventree.part import PartCategory
 
@@ -13,85 +15,54 @@ from .models import PartData
 
 logger = logging.getLogger(__name__)
 
+# Path to the built-in category map shipped with the package.
+_DEFAULT_CATEGORIES_FILE = Path(__file__).parent / "default_categories.yaml"
+
+# KiCad symbol names that receive an automatic package-level sub-category.
+_PACKAGE_SUBCATEGORY_CAPS = frozenset({"C", "C_Small"})
+_PACKAGE_SUBCATEGORY_RESISTORS = frozenset({"R", "R_Small", "R_Network", "RN"})
+
+
 # ---------------------------------------------------------------------------
-# KiCad symbol name → InvenTree category hierarchy
+# Category map loading
 # ---------------------------------------------------------------------------
-# Passives (R, C) get package sub-categories added dynamically in resolve_category().
-KICAD_CATEGORY_MAP: dict[str, tuple[str, ...]] = {
-    # Passives
-    "R":                           ("Resistors", "Surface Mount"),
-    "R_Small":                     ("Resistors", "Surface Mount"),
-    "R_Network":                   ("Resistors", "Surface Mount"),
-    "RN":                          ("Resistors", "Surface Mount"),
-    "R_Potentiometer":             ("Resistors", "Potentiometers"),
-    "R_Thermsistor":               ("Resistors", "NTC"),
-    "C":                           ("Capacitors", "Ceramic"),
-    "C_Small":                     ("Capacitors", "Ceramic"),
-    "C_Polarized":                 ("Capacitors", "Aluminium"),
-    "C_Polarized_Small":           ("Capacitors", "Aluminium"),
-    "CP":                          ("Capacitors", "Aluminium"),
-    "C_Tantalum":                  ("Capacitors", "Tantalum"),
-    "C_Polymer":                   ("Capacitors", "Polymer"),
-    "C_SuperCapacitor":            ("Capacitors", "Super Capacitors"),
-    "L":                           ("Inductors", "Power"),
-    "L_Iron":                      ("Inductors", "Power"),
-    "L_Small":                     ("Inductors", "Power"),
-    "Ferrite_Bead":                ("Inductors", "Ferrite Bead"),
-    "Ferrite_Bead_Small":          ("Inductors", "Ferrite Bead"),
-    # Semiconductors – Diodes
-    "D":                           ("Diodes", "Standard"),
-    "D_Schottky":                  ("Diodes", "Schottky"),
-    "D_Zener":                     ("Diodes", "Zener"),
-    "D_TVS":                       ("Circuit Protections", "TVS"),
-    "LED":                         ("Diodes", "LED"),
-    "LED_RGB":                     ("Diodes", "LED"),
-    # Specific parts present in this BOM
-    "BAT43W-V":                    ("Diodes", "Schottky"),
-    "USBLC6-2SC6":                 ("Circuit Protections", "TVS"),
-    # Semiconductors – Transistors
-    "Q_NPN_BCE":                   ("Transistors", "NPN"),
-    "Q_PNP_BCE":                   ("Transistors", "PNP"),
-    "Q_NMOS_GSD":                  ("Transistors", "N-Channel FET"),
-    "Q_PMOS_GSD":                  ("Transistors", "P-Channel FET"),
-    "Q_NMOS_GDS":                  ("Transistors", "N-Channel FET"),
-    "Q_Load_Switch_P":             ("Transistors", "Load Switches"),
-    "2N7002":                      ("Transistors", "N-Channel FET"),
-    "BC847BS":                     ("Transistors", "NPN"),
-    # Crystals & oscillators
-    "Crystal":                     ("Crystals and Oscillators", "Crystals"),
-    "Crystal_GND24":               ("Crystals and Oscillators", "Crystals"),
-    "Oscillator":                  ("Crystals and Oscillators", "Oscillators"),
-    # Power management
-    "LMR51430":                    ("Power Management", "Buck"),
-    "TLV73333PDBV":                ("Power Management", "LDO"),
-    "Regulator_Linear":            ("Power Management", "LDO"),
-    "Regulator_Switching":         ("Power Management", "Buck"),
-    # Integrated circuits
-    "STM32U575CITx":               ("Integrated Circuits", "Microcontroller"),
-    "CAT24C128":                   ("Integrated Circuits", "Memory"),
-    "IC_Generic":                  ("Integrated Circuits",),
-    # RF
-    "SA818V":                      ("RF", "Chipset"),
-    "LFCN-160":                    ("RF", "Filter"),
-    "Antenna":                     ("RF", "Antenna"),
-    "Antenna_Shield":              ("RF", "Shield"),
-    # Connectors
-    "Conn_Coaxial":                ("Connectors", "Coaxial"),
-    "Conn_01x01":                  ("Connectors", "Header"),
-    "Conn_01x02":                  ("Connectors", "Header"),
-    "Conn_01x03":                  ("Connectors", "Header"),
-    "Conn_01x04":                  ("Connectors", "Header"),
-    "Conn_02x10_Row_Letter_First": ("Connectors", "Header"),
-    "Conn_ARM_JTAG_SWD_10":        ("Connectors", "Header"),
-    "USB_C_Receptacle":            ("Connectors", "Interface"),
-    "USB_B_Micro":                 ("Connectors", "Interface"),
-    "Conn_FPC":                    ("Connectors", "FPC"),
-    "BatteryHolder":               ("Connectors", "Battery"),
-    # Mechanicals
-    "SW_Push":                     ("Mechanicals", "Switch"),
-    "SW_SPDT":                     ("Mechanicals", "Switch"),
-    "Mounting_Hole":               ("Mechanicals",),
-}
+
+def load_category_map(path: Optional[str] = None) -> dict[str, tuple[str, ...]]:
+    """Load a KiCad symbol → InvenTree category map from a YAML file.
+
+    Each YAML key is a KiCad symbol name; its value must be a list of strings
+    that form the InvenTree category hierarchy (top-level → sub-category).
+
+    If *path* is None the built-in ``default_categories.yaml`` is used.
+
+    Example YAML entry::
+
+        R: [Resistors, Surface Mount]
+        Crystal: [Crystals and Oscillators, Crystals]
+
+    Raises ``SystemExit`` with a descriptive message when the file cannot be
+    read or contains an invalid entry.
+    """
+    file_path = Path(path) if path else _DEFAULT_CATEGORIES_FILE
+    try:
+        with open(file_path) as fh:
+            raw = yaml.safe_load(fh) or {}
+    except FileNotFoundError:
+        logger.error("Category map file not found: %s", file_path)
+        raise SystemExit(f"ERROR: category map file not found: {file_path}")
+    except yaml.YAMLError as exc:
+        logger.error("Failed to parse category map %s: %s", file_path, exc)
+        raise SystemExit(f"ERROR: failed to parse YAML in {file_path}: {exc}")
+
+    result: dict[str, tuple[str, ...]] = {}
+    for key, value in raw.items():
+        if not isinstance(value, list) or not all(isinstance(s, str) for s in value):
+            raise SystemExit(
+                f"ERROR: invalid entry in {file_path}: key '{key}' must map to "
+                f"a list of strings, got {type(value).__name__!r}"
+            )
+        result[str(key)] = tuple(value)
+    return result
 
 
 def extract_package(footprint: str) -> str:
@@ -172,15 +143,23 @@ def resolve_part_category(
     kicad_part: str,
     part_data: PartData,
     footprint: str,
+    category_map: Optional[dict[str, tuple[str, ...]]] = None,
 ) -> Optional[PartCategory]:
-    """Return the InvenTree PartCategory for a part, creating it if necessary."""
-    path = KICAD_CATEGORY_MAP.get(kicad_part)
+    """Return the InvenTree PartCategory for a part, creating it if necessary.
+
+    *category_map* defaults to the built-in map loaded from
+    ``default_categories.yaml`` when not provided.
+    """
+    if category_map is None:
+        category_map = load_category_map()
+
+    path = category_map.get(kicad_part)
     if path:
         pkg = extract_package(footprint) if footprint else ""
         # Ceramic caps and resistors get a package-level sub-category.
-        if kicad_part in ("C", "C_Small") and pkg:
+        if kicad_part in _PACKAGE_SUBCATEGORY_CAPS and pkg:
             path = path + (pkg,)
-        elif kicad_part in ("R", "R_Small", "R_Network", "RN") and pkg:
+        elif kicad_part in _PACKAGE_SUBCATEGORY_RESISTORS and pkg:
             path = path + (pkg,)
         return get_or_create_category(api, path)
 
