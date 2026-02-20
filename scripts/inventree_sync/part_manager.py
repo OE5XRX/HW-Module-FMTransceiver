@@ -23,11 +23,6 @@ from .models import PartData
 
 logger = logging.getLogger(__name__)
 
-# LCSC supplier PK in InvenTree (fall back to name lookup if not found)
-_LCSC_SUPPLIER_PK = 3
-# Mouser supplier PK in InvenTree
-_MOUSER_SUPPLIER_PK = 2
-
 
 def _strip_mouser_prefix(mouser_sku: str) -> str:
     """
@@ -110,8 +105,8 @@ def ensure_parts_exist(
     lcsc_fetcher = LCSCFetcher()
     mouser_fetcher = MouserFetcher()
 
-    lcsc_supplier = get_or_create_supplier(api, pk=_LCSC_SUPPLIER_PK, name="LCSC")
-    mouser_supplier = get_or_create_supplier(api, pk=_MOUSER_SUPPLIER_PK, name="Mouser")
+    lcsc_supplier = get_or_create_supplier(api, name="LCSC")
+    mouser_supplier = get_or_create_supplier(api, name="Mouser")
 
     for entry in parts:
         lcsc_skus: list = getattr(entry, "lcsc", [])

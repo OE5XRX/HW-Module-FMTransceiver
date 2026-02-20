@@ -163,8 +163,17 @@ def resolve_part_category(
             path = path + (pkg,)
         return get_or_create_category(api, path)
 
+    # Symbol not in the map – warn so the user can extend the YAML file
+    logger.warning(
+        "KiCad symbol %r not found in category map; "
+        "add it to your categories YAML to assign a specific category.",
+        kicad_part,
+    )
+
     # Supplier-provided category path as a fallback
     if part_data and part_data.category_path:
+        logger.debug("Using supplier-provided category for %r: %s", kicad_part, part_data.category_path)
         return get_or_create_category(api, tuple(part_data.category_path))
 
+    logger.debug("Falling back to 'Miscellaneous' for %r", kicad_part)
     return get_or_create_category(api, ("Miscellaneous",))

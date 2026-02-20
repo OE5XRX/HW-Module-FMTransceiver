@@ -20,12 +20,8 @@ from .models import PartData
 logger = logging.getLogger(__name__)
 
 
-def get_or_create_supplier(api: InvenTreeAPI, pk: int, name: str) -> Optional[Company]:
-    """Return the supplier Company by PK; fall back to name search or creation."""
-    try:
-        return Company(api, pk=pk)
-    except Exception:
-        pass
+def get_or_create_supplier(api: InvenTreeAPI, name: str) -> Optional[Company]:
+    """Return the supplier Company by name, creating it if not found."""
     try:
         companies = Company.list(api, name=name, is_supplier=True)
         if companies:
