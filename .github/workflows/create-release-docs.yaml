@@ -64,12 +64,12 @@ jobs:
             --assembly_image output/*-3D_top-with.png \
             --stencil_image output/*-stencil_top.png
 
-#      - name: Deploy 🚀
-#        uses: JamesIves/github-pages-deploy-action@v4
-#        with:
-#          token: ${{ secrets.DEPLOY_GH_TOKEN }}
-#          repository-name: OE5XRX/OE5XRX.github.io
-#          branch: main
-#          folder: output
-#          target-folder: docs/remote-station/hardware/${{ github.event.repository.name }}
-#          clean: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_GH_TOKEN }}
+          repository-name: OE5XRX/OE5XRX.github.io
+          branch: main
+          folder: output
+          target-folder: docs/remote-station/hardware/${{ github.event.repository.name }}
+          clean: true
