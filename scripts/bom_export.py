@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-bom-export.py – Export a KiCad BOM CSV to InvenTree.
+bom_export.py – Export a KiCad BOM CSV to InvenTree.
 
 Creates a PCB part and an assembly part in InvenTree, then populates the BOM
 with all components from the CSV.  Any parts not yet present in InvenTree are
@@ -16,13 +16,13 @@ import argparse
 import csv
 import logging
 import sys
-from dataclasses import dataclass, field
 
 from inventree.api import InvenTreeAPI
 from inventree.company import SupplierPart
 from inventree.part import BomItem, Part, PartCategory, PartRelated
 
-from part_importer import ensure_parts_exist
+from inventree_sync import BomEntry, ensure_parts_exist
+from inventree_sync.categories import load_category_map
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
@@ -33,30 +33,17 @@ ASSEMBLY_CATEGORY_NAME = "PCBA"
 STENCIL_CATEGORY_NAME  = "SMT Stencil"
 
 
-def resolve_category(api: InvenTreeAPI, name: str) -> PartCategory:
+# ---------------------------------------------------------------------------
+# Category lookup
+# ---------------------------------------------------------------------------
+
+def get_category_by_name(api: InvenTreeAPI, name: str) -> PartCategory:
     """Return the PartCategory with the given name, or abort if not found."""
     matches = [c for c in PartCategory.list(api) if c.name == name]
     if not matches:
         log.error("InvenTree category %r not found. Create it first.", name)
         sys.exit(1)
     return matches[0]
-
-
-# ---------------------------------------------------------------------------
-# Data model
-# ---------------------------------------------------------------------------
-
-@dataclass(slots=True)
-class BomEntry:
-    """One row of the KiCad BOM CSV."""
-    reference: str
-    qty: int
-    kicad_part: str
-    kicad_value: str
-    kicad_footprint: str
-    lcsc: list[str] = field(default_factory=list)
-    mouser: list[str] = field(default_factory=list)
-    inventree_part: list[Part] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -112,7 +99,7 @@ def match_supplier_parts(api: InvenTreeAPI, entries: list[BomEntry]) -> None:
 
 
 # ---------------------------------------------------------------------------
-# PCB + assembly creation
+# PCB + assembly + stencil creation
 # ---------------------------------------------------------------------------
 
 def create_pcb_part(api: InvenTreeAPI, category: PartCategory, name: str, version: str, image: str) -> Part:
@@ -141,7 +128,13 @@ def create_assembly_part(api: InvenTreeAPI, category: PartCategory, name: str, v
     return part
 
 
-def create_stencil_part(api: InvenTreeAPI, category: PartCategory, name: str, version: str, image: str | None = None) -> Part:
+def create_stencil_part(
+    api: InvenTreeAPI,
+    category: PartCategory,
+    name: str,
+    version: str,
+    image: str | None = None,
+) -> Part:
     part = Part.create(api, {
         "category": category.pk,
         "name": f"{name} SMT Stencil",
@@ -154,6 +147,9 @@ def create_stencil_part(api: InvenTreeAPI, category: PartCategory, name: str, ve
     return part
 
 
+# ---------------------------------------------------------------------------
+# BOM population
+# ---------------------------------------------------------------------------
 
 def populate_bom(
     api: InvenTreeAPI,
@@ -189,12 +185,22 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Export a KiCad BOM CSV to an InvenTree assembly BOM."
     )
-    parser.add_argument("--csv_file",        required=True, help="Path to the KiCad BOM CSV")
-    parser.add_argument("--name",            required=True, help="Module name (e.g. HW-Module-FMTransceiver)")
-    parser.add_argument("--version",         required=True, help="Revision string (e.g. 0.99)")
+    parser.add_argument("--csv_file",        required=True,  help="Path to the KiCad BOM CSV")
+    parser.add_argument("--name",            required=True,  help="Module name (e.g. HW-Module-FMTransceiver)")
+    parser.add_argument("--version",         required=True,  help="Revision string (e.g. 0.99)")
     parser.add_argument("--pcb_image",       required=True,  help="PCB render image")
     parser.add_argument("--assembly_image",  required=True,  help="Assembly render image")
     parser.add_argument("--stencil_image",   required=False, help="Stencil paste-layer render (optional)")
+    parser.add_argument(
+        "--categories",
+        required=False,
+        metavar="YAML_FILE",
+        help=(
+            "Path to a YAML file mapping KiCad symbol names to InvenTree "
+            "category hierarchies.  Defaults to the built-in "
+            "default_categories.yaml shipped with the package."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -208,15 +214,18 @@ def main() -> None:
 
     entries = load_bom(args.csv_file)
 
+    # Load category map (custom file or built-in default)
+    category_map = load_category_map(args.categories)
+
     # Create any parts that don't exist in InvenTree yet
-    ensure_parts_exist(api, entries)
+    ensure_parts_exist(api, entries, category_map)
 
     # Match every BOM entry to its InvenTree part via supplier SKU
     match_supplier_parts(api, entries)
 
-    pcb_cat      = resolve_category(api, PCB_CATEGORY_NAME)
-    assembly_cat = resolve_category(api, ASSEMBLY_CATEGORY_NAME)
-    stencil_cat  = resolve_category(api, STENCIL_CATEGORY_NAME)
+    pcb_cat      = get_category_by_name(api, PCB_CATEGORY_NAME)
+    assembly_cat = get_category_by_name(api, ASSEMBLY_CATEGORY_NAME)
+    stencil_cat  = get_category_by_name(api, STENCIL_CATEGORY_NAME)
 
     pcb      = create_pcb_part(api, pcb_cat, args.name, args.version, args.pcb_image)
     assembly = create_assembly_part(api, assembly_cat, args.name, args.version, args.assembly_image)

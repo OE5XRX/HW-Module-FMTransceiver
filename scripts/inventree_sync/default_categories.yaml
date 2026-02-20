@@ -1,0 +1,96 @@
+# KiCad symbol name → InvenTree category hierarchy
+#
+# Each entry maps a KiCad symbol name to a list of category names that form
+# a hierarchy in InvenTree (from top-level to sub-category).
+#
+# You can freely rename, add, or remove entries to match your InvenTree
+# category tree.  The special keys "package_subcategory_caps" and
+# "package_subcategory_resistors" control which KiCad symbols get an
+# additional package-level sub-category appended automatically.
+#
+# Notes:
+#   - Use a YAML list even for a single-level category: ["Miscellaneous"]
+#   - Hierarchy depth is unlimited.
+
+# ── Passives ─────────────────────────────────────────────────────────────────
+R:            [Resistors, Surface Mount]   # + package sub-category appended
+R_Small:      [Resistors, Surface Mount]
+R_Network:    [Resistors, Surface Mount]
+RN:           [Resistors, Surface Mount]
+R_Potentiometer: [Resistors, Potentiometers]
+R_Thermsistor:   [Resistors, NTC]
+
+C:            [Capacitors, Ceramic]        # + package sub-category appended
+C_Small:      [Capacitors, Ceramic]
+C_Polarized:  [Capacitors, Aluminium]
+C_Polarized_Small: [Capacitors, Aluminium]
+CP:           [Capacitors, Aluminium]
+C_Tantalum:   [Capacitors, Tantalum]
+C_Polymer:    [Capacitors, Polymer]
+C_SuperCapacitor: [Capacitors, Super Capacitors]
+
+L:            [Inductors, Power]
+L_Iron:       [Inductors, Power]
+L_Small:      [Inductors, Power]
+Ferrite_Bead: [Inductors, Ferrite Bead]
+Ferrite_Bead_Small: [Inductors, Ferrite Bead]
+
+# ── Diodes ────────────────────────────────────────────────────────────────────
+D:          [Diodes, Standard]
+D_Schottky: [Diodes, Schottky]
+D_Zener:    [Diodes, Zener]
+D_TVS:      [Circuit Protections, TVS]
+LED:        [Diodes, LED]
+LED_RGB:    [Diodes, LED]
+BAT43W-V:   [Diodes, Schottky]
+USBLC6-2SC6: [Circuit Protections, TVS]
+
+# ── Transistors ───────────────────────────────────────────────────────────────
+Q_NPN_BCE:      [Transistors, NPN]
+Q_PNP_BCE:      [Transistors, PNP]
+Q_NMOS_GSD:     [Transistors, N-Channel FET]
+Q_PMOS_GSD:     [Transistors, P-Channel FET]
+Q_NMOS_GDS:     [Transistors, N-Channel FET]
+Q_Load_Switch_P: [Transistors, Load Switches]
+2N7002:         [Transistors, N-Channel FET]
+BC847BS:        [Transistors, NPN]
+
+# ── Crystals & oscillators ────────────────────────────────────────────────────
+Crystal:      [Crystals and Oscillators, Crystals]
+Crystal_GND24: [Crystals and Oscillators, Crystals]
+Oscillator:   [Crystals and Oscillators, Oscillators]
+
+# ── Power management ──────────────────────────────────────────────────────────
+LMR51430:          [Power Management, Buck]
+TLV73333PDBV:      [Power Management, LDO]
+Regulator_Linear:  [Power Management, LDO]
+Regulator_Switching: [Power Management, Buck]
+
+# ── Integrated circuits ───────────────────────────────────────────────────────
+STM32U575CITx: [Integrated Circuits, Microcontroller]
+CAT24C128:     [Integrated Circuits, Memory]
+IC_Generic:    [Integrated Circuits]
+
+# ── RF ────────────────────────────────────────────────────────────────────────
+SA818V:       [RF, Chipset]
+LFCN-160:     [RF, Filter]
+Antenna:      [RF, Antenna]
+Antenna_Shield: [RF, Shield]
+
+# ── Connectors ────────────────────────────────────────────────────────────────
+Conn_Coaxial:                [Connectors, Coaxial]
+Conn_01x01:                  [Connectors, Header]
+Conn_01x02:                  [Connectors, Header]
+Conn_01x03:                  [Connectors, Header]
+Conn_01x04:                  [Connectors, Header]
+Conn_02x10_Row_Letter_First: [Connectors, Header]
+Conn_ARM_JTAG_SWD_10:        [Connectors, Header]
+USB_C_Receptacle:            [Connectors, Interface]
+USB_B_Micro:                 [Connectors, Interface]
+Conn_FPC:                    [Connectors, FPC]
+BatteryHolder:               [Connectors, Battery]
+
+# ── Mechanicals ───────────────────────────────────────────────────────────────
+SW_Push:       [Mechanicals, Switch]
+SW_SPDT:       [Mechanicals, Switch]
+Mounting_Hole: [Mechanicals]
