@@ -702,7 +702,7 @@
 			(uuid "82da7912-375a-47f3-8410-5e2682dc584e")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "#PWR0402")
 					(unit 1)
@@ -790,7 +790,7 @@
 			(uuid "89f7653d-00c4-4506-9675-91accb865947")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "R401")
 					(unit 1)
@@ -856,7 +856,7 @@
 			(uuid "5b48af77-3259-452d-8bef-e207b5f70439")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "#PWR0403")
 					(unit 1)
@@ -942,7 +942,7 @@
 			(uuid "9ece77e4-a50a-49ac-a790-13c9f8c69794")
 		)
 		(instances
-			(project ""
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "R403")
 					(unit 1)
@@ -1039,7 +1039,7 @@
 			(uuid "507a8d23-9e08-4800-a87a-6e687da9a776")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "C402")
 					(unit 1)
@@ -1105,7 +1105,7 @@
 			(uuid "edf72584-2e4d-450b-84ac-2453a1fd62d8")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "#PWR0401")
 					(unit 1)
@@ -1193,7 +1193,7 @@
 			(uuid "edb87206-b3d2-402a-8279-4187b7558c0f")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "R402")
 					(unit 1)
@@ -1288,7 +1288,7 @@
 			(uuid "ed2397ea-7c4a-4e1d-b965-a093bee5bb14")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/78e2bba8-f1d6-407f-8788-be9ef4447fa2"
 					(reference "C401")
 					(unit 1)

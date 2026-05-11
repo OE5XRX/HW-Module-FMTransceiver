@@ -7,6 +7,10 @@ global:
 preflight:
   erc:
     warnings_as_errors: true
+    filters:
+      - filter: 'Ignore library symbol cache drift between local KiCad and CI libs'
+        error: lib_symbol_mismatch
+        regex: '.*'
   drc: true
   update_xml: false
   check_zone_fills: true

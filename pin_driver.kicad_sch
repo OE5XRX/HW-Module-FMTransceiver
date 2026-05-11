@@ -136,6 +136,7 @@
 		)
 		(symbol "Transistor_FET:2N7002"
 			(pin_names
+				(offset 0)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -351,7 +352,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+						(xy 2.921 0.381) (xy 3.683 0.381)
 					)
 					(stroke
 						(width 0)
@@ -683,7 +684,7 @@
 			(uuid "f56af2b2-698d-4731-873b-eb94426d31e2")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/0ab8e43f-a9b2-43d4-be36-1f1ef25ab18a"
 					(reference "R501")
 					(unit 1)
@@ -749,7 +750,7 @@
 			(uuid "e65dbc7c-b5df-4cef-89f6-aedbfc5730b5")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/0ab8e43f-a9b2-43d4-be36-1f1ef25ab18a"
 					(reference "#PWR0501")
 					(unit 1)
@@ -852,7 +853,7 @@
 			(uuid "271c0986-37d8-4e4e-899c-924c5ebe7232")
 		)
 		(instances
-			(project "fm"
+			(project "main"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/0ab8e43f-a9b2-43d4-be36-1f1ef25ab18a"
 					(reference "Q501")
 					(unit 1)
