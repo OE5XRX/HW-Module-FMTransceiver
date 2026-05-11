@@ -31,7 +31,7 @@ Row,Description,Part,References,Value,Footprint,Quantity Per PCB,Status,Datashee
 30,"32 kb CMOS Serial EEPROM, SOIC-8/TSSOP-8/DFN-8",CAT24C128,U202,CAT24C32,SOIC-8_3.9x4.9mm_P1.27mm,1, ,,,698-CAT24C32WI-GT3,
 31,"4.5-V to 36-V, 3-A synchronous buck converter with 40-µA IQ, SOT-23-6",LMR51430,U801,LMR51430 500kHz,SOT-23-6,1, ,https://www.ti.com/lit/ds/symlink/lmr51430.pdf,,595-LMR51430XDDCR,
 32,,SA818V,U101,SA818V,DRA818,1, ,,C3001504,,
-33,"STMicroelectronics Arm Cortex-M33 MCU, 2048KB flash, 786KB RAM, 160 MHz, 1.71-3.6V, 37 GPIO, LQFP48",STM32U575CITx,U201,STM32U575CITx,LQFP-48_7x7mm_P0.5mm,1, ,https://www.st.com/resource/en/datasheet/stm32u575ci.pdf,,511-STM32F302CBT7,
+33,"STMicroelectronics Arm Cortex-M33 MCU, 2048KB flash, 786KB RAM, 160 MHz, 1.71-3.6V, 37 GPIO, LQFP48",STM32U575CITx,U201,STM32U575CITx,LQFP-48_7x7mm_P0.5mm,1, ,https://www.st.com/resource/en/datasheet/stm32u575ci.pdf,,511-STM32U575CIT6,
 34,"300mA Capacitor-Free Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5",TLV73333PDBV,U203,TLV73333PQDBVRQ1,SOT-23-5,1, ,http://www.ti.com/lit/ds/symlink/tlv733p.pdf,C2862550,595-TLV73333PQDBVRQ1,
 35,"Very low capacitance ESD protection diode, 2 data-line, SOT-23-6",USBLC6-2SC6,U204,USBLC6-2SC6,SOT-23-6,1, ,https://www.st.com/resource/en/datasheet/usblc6-2.pdf,C2827654,,
 36,Two pin crystal,Crystal,Y201,8MHz / 20pF,Crystal_SMD_HC49-SD,1, ,~,,73-XT49M800-20,
