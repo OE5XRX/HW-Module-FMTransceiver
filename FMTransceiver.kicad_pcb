@@ -1852,7 +1852,7 @@
 		(property ki_fp_filters "MountingHole*")
 		(path "/df999db3-7087-40c6-8ce3-d5dd370ce265")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
@@ -2877,7 +2877,7 @@
 		(property ki_fp_filters "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*")
 		(path "/cb47309f-4f17-4d44-aeb2-96b6cbad6b4f")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.21 0)
@@ -6054,7 +6054,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/e75eeb7d-593d-4306-9c4c-d944a66a4f8d")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -10803,7 +10803,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/aa40c029-3644-458e-b3cb-532aa386a1fb")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.227064 0.735)
@@ -11907,7 +11907,7 @@
 		(property ki_fp_filters "D*SOD?123*")
 		(path "/e56e2a97-71b1-4d21-b73a-f7f360f5b1ef")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -2.36 -1)
@@ -12229,7 +12229,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/5c7f5efb-e956-43e3-8aa5-4e6b4a7005c6")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -13457,7 +13457,7 @@
 		)
 		(path "/84ab70c1-2e7e-4b2c-8410-1f1129fb1cdc")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -17.8 -9.5)
@@ -15061,7 +15061,7 @@
 		(property ki_fp_filters "Filter*Mini?Circuits*FV1206*")
 		(path "/41ba872f-62e1-4497-9c28-d238c56e3486")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.57 0.91)
@@ -16227,7 +16227,7 @@
 		(property ki_fp_filters "MountingHole*")
 		(path "/232daf58-0468-4f94-bfdb-9142284c844d")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(fp_circle
 			(center 0 0)
@@ -16900,7 +16900,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/fc6cd225-5757-46cd-8c67-0beb9cd542fe")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -17797,7 +17797,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/1a1b846a-0258-4ade-ba0a-5a86240af8a3")
 		(sheetname "/")
-		(sheetfile "main.kicad_sch")
+		(sheetfile "FMTransceiver.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.227064 0.735)

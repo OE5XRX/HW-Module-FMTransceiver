@@ -1,7 +1,0 @@
-inventree
-requests
-beautifulsoup4
-Pillow
-numpy
-cairosvg
-PyYAML
