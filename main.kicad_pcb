@@ -3549,7 +3549,7 @@
 			(net 1 "GND")
 			(pinfunction "Ext")
 			(pintype "passive")
-			(uuid "eacd2b93-bfc3-452c-a644-912ad2c085ed")
+			(uuid "eb607c8e-8b45-4489-952f-f4434bcc0031")
 		)
 		(pad "2" smd rect
 			(at 0 4.25 270)
@@ -3558,7 +3558,7 @@
 			(net 1 "GND")
 			(pinfunction "Ext")
 			(pintype "passive")
-			(uuid "eacd2b93-bfc3-452c-a644-912ad2c085ed")
+			(uuid "b006adad-d581-45d6-8bdf-6ee33a3334b9")
 		)
 		(pad "2" smd rect
 			(at 0 4.25 270)
@@ -3567,7 +3567,7 @@
 			(net 1 "GND")
 			(pinfunction "Ext")
 			(pintype "passive")
-			(uuid "eacd2b93-bfc3-452c-a644-912ad2c085ed")
+			(uuid "dc70c638-8c96-4297-9d5e-76961fecf272")
 		)
 		(embedded_fonts no)
 		(model "${KICAD9_3DMODEL_DIR}/Connector_Coaxial.3dshapes/SMA_Amphenol_132289_EdgeMount.step"
@@ -17603,7 +17603,7 @@
 			(net 1 "GND")
 			(pinfunction "GND")
 			(pintype "passive")
-			(uuid "c420be45-6207-4b3d-863a-2d3c25ce8088")
+			(uuid "070e7216-baed-4f4e-97a2-83123e4cb864")
 		)
 		(pad "3" smd roundrect
 			(at 1.625 0 180)
@@ -17634,7 +17634,7 @@
 			(net 1 "GND")
 			(pinfunction "GND")
 			(pintype "passive")
-			(uuid "6c8bf94e-77a8-4f79-8b7f-1885b3ac3abd")
+			(uuid "126feee3-3998-418b-9951-90d9908c0675")
 		)
 		(embedded_fonts no)
 		(model "${KICAD9_3DMODEL_DIR}/Filter.3dshapes/Filter_Mini-Circuits_FV1206.step"
@@ -21159,10 +21159,10 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "<<HASH>>"
-		(at 153.797 126.695 0)
+	(gr_text "FM Board"
+		(at 153.797 123.139 0)
 		(layer "F.SilkS")
-		(uuid "3c954e68-d820-45e3-b698-e463f455bc0d")
+		(uuid "d3e5b963-63b4-4444-ae31-4507df38c880")
 		(effects
 			(font
 				(size 1.8 1.8)
@@ -21172,10 +21172,10 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "FM Board"
-		(at 153.797 123.139 0)
+	(gr_text "<<HASH>>"
+		(at 153.797 126.695 0)
 		(layer "F.SilkS")
-		(uuid "d3e5b963-63b4-4444-ae31-4507df38c880")
+		(uuid "3c954e68-d820-45e3-b698-e463f455bc0d")
 		(effects
 			(font
 				(size 1.8 1.8)
