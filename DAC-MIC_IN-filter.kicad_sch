@@ -652,7 +652,7 @@
 			(uuid "a43691c0-b7b2-408f-a5f6-2fb3551c1fab")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "R304")
 					(unit 1)
@@ -718,7 +718,7 @@
 			(uuid "ee2cea53-5c53-4214-a86a-304a321786f3")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "#PWR0302")
 					(unit 1)
@@ -813,7 +813,7 @@
 			(uuid "c82c0fbb-3cbd-4e3c-92f4-ec5835cb22ce")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "R303")
 					(unit 1)
@@ -910,7 +910,7 @@
 			(uuid "15eb9f6a-e96c-455d-9668-49bd8d74884b")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "R301")
 					(unit 1)
@@ -1007,7 +1007,7 @@
 			(uuid "84f69737-a6c7-455d-9d8d-acf1e34e974a")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "C303")
 					(unit 1)
@@ -1102,7 +1102,7 @@
 			(uuid "51da5eb6-5d7f-4e6e-b87f-3f1e09717e38")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "C301")
 					(unit 1)
@@ -1168,7 +1168,7 @@
 			(uuid "a35a8354-f9b3-46ef-b006-07efdd72444b")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "#PWR0303")
 					(unit 1)
@@ -1265,7 +1265,7 @@
 			(uuid "47795439-9424-4e0f-8975-470e01092f0f")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "R302")
 					(unit 1)
@@ -1362,7 +1362,7 @@
 			(uuid "bce97f4e-bcce-4156-80ca-8b4b3e2b3242")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "C302")
 					(unit 1)
@@ -1428,7 +1428,7 @@
 			(uuid "eb838493-9127-46b0-9fe8-b3eee2f82fa1")
 		)
 		(instances
-			(project "main"
+			(project "FMTransceiver"
 				(path "/f228839c-6576-40b2-ae70-679b7b460639/be8a26fb-cb42-4581-b87a-069209548956"
 					(reference "#PWR0301")
 					(unit 1)
