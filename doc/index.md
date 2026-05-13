@@ -21,7 +21,7 @@ FM-Schmalband-Transceiver auf Basis des **SA818**-Moduls für die Amateurfunkbä
 
 Zwischen SA818 und CM4 sitzt ein **STM32U575** Mikrocontroller. Er stellt sich am USB als **Composite Device** vor und sieht für das CM4-Linux aus wie:
 
-- **UAC2** (USB Audio Class 2) — TX-Audio strömt vom CM4 als Audio-Sink in den STM32-DAC und von dort als analoges Signal zum SA818-Mic-Input. RX-Audio läuft umgekehrt: SA818-AF_OUT → STM32-ADC → über UAC2 als Audio-Source zurück an's CM4.
+- **UAC2** (USB Audio Class 2) — TX-Audio strömt vom CM4 als Audio-Sink in den STM32-DAC und von dort als analoges Signal zum SA818-Mic-Input. RX-Audio läuft umgekehrt: SA818-AF_OUT → STM32-ADC → über UAC2 als Audio-Source zurück ans CM4.
 - **CDC ACM** (Virtual COM Port) — PTT, Squelch-Read, Frequenz, Power-Level usw. werden vom CM4 als ASCII-Kommandos über `/dev/ttyACM*` gesetzt.
 - **DFU** (Device Firmware Upgrade) — STM32-Firmware kann über USB neu geflasht werden, ohne SWD-Adapter und ohne BOOT0-Hardware-Jumper.
 
@@ -70,8 +70,8 @@ Es gibt nur **einen einzigen Filter-Footprint** (FL101 — Mini-Circuits FV1206)
 | Bezeichner | Typ | Funktion |
 | ---------- | --- | -------- |
 | **J101** | Board-Edge SMA | Antennenanschluss (50 Ω) |
-| **J201** | 10-Pin 1.27 mm SWD (Cortex Debug) | STM32-Programming- und Debug-Header |
-| **J202** | 20-Pin (Hirose PCN10-20P-2.54DSA) | Bus-Stecker zum [BusBoard](../HW-Module-BusBoard/) |
+| **J201** | 10-Pin 2.54 mm Stiftleiste 2×5 horizontal (right-angle) | STM32-Programming- und Debug-Header (SWD-Pin-Belegung) |
+| **J202** | 20-Pin (Hirose **PCN10C-20S-2.54DS** — weibliche Buchse, paart mit dem PCN10-20P-Stift-Header auf dem BusBoard) | Bus-Stecker zum [BusBoard](../HW-Module-BusBoard/) |
 | **JP201** | 2× Lötpad | EEPROM-Write-Protect-Brücke (siehe „EEPROM" unten) |
 
 ### Bus-Stecker J202 (FM-Slot-Sicht)
@@ -95,7 +95,7 @@ Hinweis: Pin-Numerierung am FM-Modul ist **gespiegelt** ggü. dem BusBoard-Slot 
 
 ### STM32 SWD-Header J201
 
-Standard ARM Cortex Debug 10-Pin (1.27 mm). Passt für ST-Link V2/V3, J-Link, Black Magic Probe.
+10-Pin 2.54-mm-Stiftleiste (2×5, right-angle/horizontal). Pin-Belegung folgt der SWD-Konvention, der Stecker selbst ist aber **kein** Cortex-Debug-1.27-mm-Standard — Adapter-Kabel für 2.54 mm benötigt, oder Jumper-Litzen direkt auf die einzelnen Pins.
 
 | Pin | Signal | Pin | Signal |
 |----:|--------|----:|--------|
@@ -111,12 +111,12 @@ Standard ARM Cortex Debug 10-Pin (1.27 mm). Passt für ST-Link V2/V3, J-Link, Bl
 
 Die STM32-GPIOs steuern das SA818 über Level-Shifter (MOSFET / NPN — `pin_driver` und `pin_driver_npn` Sub-Sheets):
 
-| Funktion | STM32 GPIO-Label | SA818-Pin | Richtung |
-| -------- | ---------------- | --------- | -------- |
-| **PTT** (Push-to-Talk) | `GPIO1` | `PB2` | STM32 → SA818 |
-| **POWER_DOWN** (Modul ein/aus) | `GPIO2` | `PB10` | STM32 → SA818 |
-| **H_L_Power** (Sendeleistung high/low) | `GPIO3` | `PB11` | STM32 → SA818 |
-| **SQUELCH** (Squelch-Open-Indikator) | `GPIO4` | `PB1` | SA818 → STM32 |
+| Funktion | Schaltplan-Label | STM32-Pin (LQFP-48) | SA818-Pin | Richtung |
+| -------- | ---------------- | ------------------- | --------- | -------- |
+| **PTT** (Push-to-Talk) | `GPIO1` | `PB2` (Pin 20) | `~PTT` (Pin 5) | STM32 → SA818 |
+| **POWER_DOWN** (Modul ein/aus) | `GPIO2` | `PB1` (Pin 19) | `~PD` (Pin 6) | STM32 → SA818 |
+| **H_L_Power** (Sendeleistung high/low) | `GPIO3` | `PB10` (Pin 21) | `H/L` (Pin 7) | STM32 → SA818 |
+| **SQUELCH** (Squelch-Open-Indikator) | `GPIO4` | `PB0` (Pin 18) | `~SQ` (Pin 1) | SA818 → STM32 |
 
 Zusätzlich UART auf STM32 USART_TX/USART_RX ↔ SA818 für AT-Kommandos (Frequenz setzen, Modulation, CTCSS, etc. — siehe SA818-Datenblatt).
 
@@ -130,7 +130,7 @@ Die STM32-Firmware (Quelle: [`FW-RemoteStation`](https://github.com/OE5XRX/FW-Re
 | **CDC ACM** | Kontroll-Pfad | `/dev/ttyACM*` — ASCII-Kommandos für PTT, Squelch-Read, Frequenz, Power-Level. |
 | **DFU** | Firmware-Update | `dfu-util` kann die STM32-FW über USB neu schreiben — **kein BOOT0-Pin-Eingriff nötig**, die laufende Firmware switcht über CDC-Kommando in den DFU-Mode. |
 
-Audio läuft vollständig analog zwischen SA818 und STM32 (DAC/ADC im STM32) — keine Echtzeitkritik am CM4 nötig, Audio wird als USB-Audio-Stream behandelt.
+Audio läuft vollständig analog zwischen SA818 und STM32 (DAC/ADC im STM32) — keine Echtzeit-Anforderungen am CM4-Linux nötig, Audio wird als regulärer USB-Audio-Stream behandelt.
 
 ## Auf der Platine verbaute Komponenten
 
@@ -180,7 +180,7 @@ Hinweis: das Modul nutzt sowohl die +12V- *als auch* die +5V-Schiene vom Bus —
 Nach Bestückung (mit Bus + CM4 verbunden):
 
 1. **Power-Sanity:** Modul in Slot stecken, +12 V anlegen, am Bus-Stecker `+5V`-Pin gegen GND messen → 5.00 ± 0.05 V (LMR51430-Output). `+3V3` (z.B. am SWD-Header J201 Pin 1 vs Pin 3) muss 3.30 ± 0.05 V zeigen.
-2. **STM32-Boot:** kurze Latenz nach Power-Up sollte am USB ein Composite Device erscheinen (`lsusb` am CM4). Drei Endpoints: UAC2 (Audio), CDC ACM (Serial), DFU.
+2. **STM32-Boot:** kurze Latenz nach Power-Up sollte am USB ein Composite Device erscheinen (`lsusb -v` am CM4). Drei USB-Interfaces sind erwartet: UAC2 (Audio), CDC ACM (Serial), DFU-Runtime.
 3. **Soundkarten-Check:** `aplay -L` / `arecord -L` am CM4 → die FM-Module-UAC2-Soundkarte muss in der Liste sein.
 4. **CDC-Konsole:** `screen /dev/ttyACM0 115200` (oder welche Nummer auch immer) — Firmware-spezifisches Prompt/Echo erwartet.
 5. **SA818-Smoke:** über CDC-Kommando Frequenz setzen, dann mit Funkscanner / SDR auf der eingestellten Frequenz Trägeraussendung kurz testen (5-Sek-Burst max, **mit Antenne!**).
