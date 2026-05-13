@@ -17,7 +17,7 @@ description: FM-Schmalband-Transceiver für 2 m (VHF) oder 70 cm (UHF) auf Basis
 
 ## Übersicht
 
-FM-Schmalband-Transceiver auf Basis des **SA818**-Moduls für die Amateurfunkbänder **2 m (144 – 174 MHz)** *oder* **70 cm (400 – 480 MHz)**. Bestückbar in beiden Varianten — abhängig vom verlöteten SA818-Chip (`SA818V` für VHF / `SA818U` für UHF) und dem dazu passenden Tiefpassfilter (LFCN-160 für VHF / LFCN-180+LFCN-490 für UHF).
+FM-Schmalband-Transceiver auf Basis des **SA818**-Moduls für die Amateurfunkbänder **2 m (144 – 174 MHz)** *oder* **70 cm (400 – 480 MHz)**. Bestückbar in beiden Varianten — abhängig vom verlöteten SA818-Chip (`SA818V` für VHF / `SA818U` für UHF) und dem dazu passenden Mini-Circuits-Tiefpassfilter (`LFCN-180` für VHF / `LFCN-490` für UHF; identischer FV1206-Footprint).
 
 Zwischen SA818 und CM4 sitzt ein **STM32U575** Mikrocontroller. Er stellt sich am USB als **Composite Device** vor und sieht für das CM4-Linux aus wie:
 
@@ -46,7 +46,7 @@ flowchart LR
     PDR --> SA
     SA -->|"SQUELCH"| PDR
     PDR -->|"GPIO4"| STM32
-    SA -->|"RF-Out"| LPF["LPF<br/>(LFCN-160 für 2m,<br/>LFCN-180+490 für 70cm)"]
+    SA -->|"RF-Out"| LPF["LPF FL101<br/>(LFCN-180 = 2m,<br/>LFCN-490 = 70cm)"]
     LPF --> ANT(["Antenne<br/>SMA edge"])
 
     STM32 -.->|"I²C intern"| EEP["CAT24C32<br/>4 KByte EEPROM"]
@@ -56,10 +56,12 @@ flowchart LR
 
 Die Platine ist für beide Amateurfunk-Bänder ausgelegt; bestückungsabhängig:
 
-| Variante | SA818-Chip | LPF-Bestückung | Band |
-| -------- | ---------- | -------------- | ---- |
-| **2 m / VHF** | `SA818V` | `LFCN-160` | 144 – 174 MHz |
-| **70 cm / UHF** | `SA818U` | `LFCN-180` + `LFCN-490` | 400 – 480 MHz |
+| Variante | SA818-Chip | LPF-Bestückung (FL101) | Band |
+| -------- | ---------- | ---------------------- | ---- |
+| **2 m / VHF** | `SA818V` | `LFCN-180` | 144 – 174 MHz |
+| **70 cm / UHF** | `SA818U` | `LFCN-490` | 400 – 480 MHz |
+
+Es gibt nur **einen einzigen Filter-Footprint** (FL101 — Mini-Circuits FV1206) auf der Platine. Je nach SA818-Bestückung wird das passende LFCN-Bauteil eingelötet.
 
 ⚠️ **Wichtig**: SA818-Chip und LPF-Bestückung müssen zueinander passen. Ein falsch bestückter Filter unterdrückt entweder das Nutzband oder lässt zu viele Oberwellen durch → Empfangsperformance schlecht und/oder Verstoß gegen Spektrumvorschriften.
 
@@ -140,7 +142,7 @@ Audio läuft vollständig analog zwischen SA818 und STM32 (DAC/ADC im STM32) —
 | **USBLC6-2SC6** (U204) | USB-ESD-Schutz auf den D±-Leitungen vor STM32. |
 | **CAT24C32** (U202) | 32 Kbit (4 KByte) I²C EEPROM. WP-Pin über `JP201`-Lötbrücke konfigurierbar. |
 | **LMR51430** (U801) | Buck-Konverter 12 V → 5 V für die SA818-Versorgung. |
-| **LFCN-160** / **LFCN-180 + LFCN-490** | Mini-Circuits Tiefpassfilter im Antennen-Pfad (Oberwellen-Unterdrückung). Bestückungs-Variante: einer ist aktiv je nach Band. |
+| **LFCN-180** *oder* **LFCN-490** (FL101) | Mini-Circuits Tiefpass im Antennen-Pfad (Oberwellen-Unterdrückung). Eines der beiden wird in den FV1206-Footprint bestückt — `LFCN-180` für 2 m, `LFCN-490` für 70 cm. |
 | **8 MHz Crystal** | Taktquelle für den STM32U575 (Backup zum HSI). |
 | **Pin Driver** (pin_driver / pin_driver_npn Sub-Sheets) | MOSFET- und NPN-Level-Shifter zwischen STM32-3.3-V-GPIOs und SA818. |
 
