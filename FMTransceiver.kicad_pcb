@@ -9,7 +9,7 @@
 	(paper "A4")
 	(title_block
 		(title "FM Module")
-		(rev "<<HASH>>")
+		(rev "<<VERSION>>")
 		(company "Amateurfunkclub für Remote Stationen")
 		(comment 1 "JLC04161H-7628")
 	)
@@ -18112,7 +18112,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "<<HASH>>"
+	(gr_text "<<VERSION>>"
 		(at 153.797 126.695 0)
 		(layer "F.SilkS")
 		(uuid "3c954e68-d820-45e3-b698-e463f455bc0d")

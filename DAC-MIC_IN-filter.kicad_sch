@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "DAC to MIC_IN filter")
-		(rev "<<HASH>>")
+		(rev "<<VERSION>>")
 		(company "Amateurfunkclub für Remote Stationen")
 	)
 	(lib_symbols
