@@ -1,0 +1,9 @@
+name: Auto-Release
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  call:
+    uses: OE5XRX/HW-Module-CI/.github/workflows/auto-release.yaml@main
+    secrets: inherit
