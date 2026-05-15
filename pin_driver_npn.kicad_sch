@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "Pin Driver for the SA818 NPN")
-		(rev "<<HASH>>")
+		(rev "<<VERSION>>")
 		(company "Amateurfunkclub für Remote Stationen")
 	)
 	(lib_symbols
